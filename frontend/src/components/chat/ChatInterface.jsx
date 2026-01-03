@@ -20,66 +20,76 @@ const ChatInterface = ({documentId}) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  useEffect(() => {
-    const fetchChatHistory = async () => {
-      try {
-        setInitialLoading(true)
-        const response = await aiService.getChatHistory(documentId)
-        setHistory(response.data || [])
-        console.log(response.extractedText)
-      } catch (error) {
-        console.error('Failed to fetch chat history:', error)
-      } finally {
-        setInitialLoading(false)
-      }
-    }
+useEffect(() => {
+  if (!documentId) return
 
-    fetchChatHistory()
-  }, [documentId])
+  const fetchChatHistory = async () => {
+    try {
+      setInitialLoading(true)
+      const response = await aiService.getChatHistory(documentId)
+      setHistory(response.data || [])
+    } catch (error) {
+      console.error('Failed to fetch chat history:', error)
+    } finally {
+      setInitialLoading(false)
+    }
+  }
+
+  fetchChatHistory()
+}, [documentId])
+
 
   useEffect(() => {
     scrollToBottom()
   }, [history])
 
-  const handleSendMessage = async (e) => {
-    e.preventDefault()
-    if (!message.trim()) return
+const handleSendMessage = async (e) => {
+  e.preventDefault()
 
-    const userMessage = {
-      role: 'user',
-      content: message,
-      timestamp: new Date()
-    }
-
-    setHistory(prev => [...prev, userMessage])
-    setMessage('')
-    setLoading(true)
-
-    try {
-      const response = await aiService.chat(documentId, message)
-
-      const assistantMessage = {
-        role: 'assistant',
-        content: response.data.answer,
-        timestamp: new Date(),
-        relevantChunks: response.data.relevantChunks
-      }
-
-      setHistory(prev => [...prev, assistantMessage])
-    } catch (error) {
-      console.error('Chat error:', error)
-      setHistory(prev => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: 'Sorry, I ran into an error. Please try again.',
-          timestamp: new Date()
-        }
-      ])
-    } finally {
-      setLoading(false)
-    }
+  if (!documentId) {
+    console.error('Missing documentId')
+    return
   }
+
+  const question = message.trim()
+  if (!question) return
+
+  const userMessage = {
+    role: 'user',
+    content: question,
+    timestamp: new Date()
+  }
+
+  setHistory(prev => [...prev, userMessage])
+  setMessage('')
+  setLoading(true)
+
+  try {
+    const response = await aiService.chat(documentId, question)
+
+    const assistantMessage = {
+      role: 'assistant',
+      content: response.data.answer,
+      timestamp: new Date(),
+      relevantChunks: response.data.relevantChunks
+    }
+
+    setHistory(prev => [...prev, assistantMessage])
+  } catch (error) {
+    console.error('Chat error:', error)
+    setHistory(prev => [
+      ...prev,
+      {
+        role: 'assistant',
+        content: 'Sorry, I ran into an error. Please try again.',
+        timestamp: new Date()
+      }
+    ])
+  } finally {
+    setLoading(false)
+  }
+}
+
 
   const renderMessage = (msg, index) => {
     const isUser = msg.role === 'user'
