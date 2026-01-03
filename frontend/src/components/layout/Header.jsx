@@ -1,0 +1,45 @@
+import React from "react";
+import { useAuth } from "../../context/AuthContext";
+import { Bell, User, Menu } from "lucide-react";
+
+const Header = ({ toggleSidebar, showHamburger }) => {
+  const { user } = useAuth();
+
+  return (
+    <header className="sticky top-0 z-40 w-full h-16 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 flex items-center justify-between px-6">
+      {/* Hamburger for mobile */}
+      {showHamburger && (
+        <button
+          onClick={toggleSidebar}
+          className="inline-flex items-center justify-center w-10 h-10 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all duration-200"
+          aria-label="toggle-sidebar"
+        >
+          <Menu size={24} />
+        </button>
+      )}
+
+      <div className="flex-1"></div>
+
+      <div className="flex items-center gap-3">
+        
+
+        {/* User profile */}
+        <div className="flex items-center gap-3 border-l border-slate-200/60 pl-3">
+          <div className="flex items-center gap-3 px-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors duration-200 cursor-pointer">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
+              <User size={18} strokeWidth={2.5} />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-slate-900">
+                {user?.username || "username"}
+              </p>
+              <p className="text-xs text-slate-500">{user?.email || "user@example.com"}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
