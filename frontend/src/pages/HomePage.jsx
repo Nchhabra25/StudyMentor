@@ -44,7 +44,7 @@ const HomePage = () => {
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <a href="#features" className="hover:text-slate-900">Features</a>
             <a href="#faq" className="hover:text-slate-900">FAQ</a>
-            <a href="/login" className="hover:text-slate-900">Login</a>
+            <Link to='/login' className="">Login</Link>
           </nav>
 
           <Button className="px-4 py-2 text-sm sm:text-base">
@@ -81,7 +81,9 @@ const HomePage = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Button className="gap-2 w-full sm:w-auto">
+              <Link to='/login'>
               Try it free <ArrowRight size={16} />
+              </Link>
             </Button>
           </div>
         </motion.div>
