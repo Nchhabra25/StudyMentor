@@ -170,10 +170,10 @@ const handleSendMessage = async (e) => {
             onChange={(e) => setMessage(e.target.value)}
             className="flex-1 h-12 px-4 border rounded-xl"
             placeholder="Ask a question..."
-            disabled={loading}
+            disabled={loading||!documentId}
           />
           <button
-            disabled={loading || !message.trim()}
+            disabled={loading || !message.trim()||!documentId}
             className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white disabled:opacity-50"
           >
             <Send size={18} />
