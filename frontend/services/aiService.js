@@ -38,15 +38,16 @@ const generateSummary = async (documentId) => {
 
 const chat = async (documentId, message) => {
   try {
-    const response = await axiosInstance.post(API_PATHS.AI.CHAT, {
-      documentId,
-      question: message // Note: Payload uses 'question' as seen in images
-    });
+    const response = await axiosInstance.post(
+      API_PATHS.AI.CHAT(documentId), 
+      { question: message }          
+    );
     return response.data;
   } catch (error) {
     throw error.response?.data || { message: 'Chat request failed' };
   }
 };
+
 
 const explainConcept = async (documentId, concept) => {
   try {

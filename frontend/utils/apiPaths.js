@@ -17,14 +17,15 @@ export const API_PATHS = {
     DELETE_DOCUMENT: (id) => `/api/documents/${id}`,
   },
 
-  AI: {
-    GENERATE_FLASHCARDS: "/api/ai/generate-flashcards",
-    GENERATE_QUIZ: "/api/ai/generate-quiz",
-    GENERATE_SUMMARY: "/api/ai/generate-summary",
-    CHAT: "/api/ai/chat",
-    EXPLAIN_CONCEPT: "/api/ai/explain-concept",
-    GET_CHAT_HISTORY: (documentId) => `/api/ai/chathistory/${documentId}`,
-  },
+AI: {
+  GENERATE_FLASHCARDS: "/api/ai/generate-flashcards",
+  GENERATE_QUIZ: "/api/ai/generate-quiz",
+  GENERATE_SUMMARY: "/api/ai/generate-summary",
+  CHAT: (documentId) => `/api/ai/chat/${documentId}`, 
+  EXPLAIN_CONCEPT: "/api/ai/explain-concept",
+  GET_CHAT_HISTORY: (documentId) => `/api/ai/chathistory/${documentId}`,
+},
+
 
   FLASHCARDS: {
     GET_ALL_FLASHCARD_SETS: "/api/flashcards",

@@ -16,7 +16,7 @@ router.use(protect);
 router.post('/generate-flashcards', generateFlashcards);
 router.post('/generate-quiz', generateQuiz);
 router.post('/generate-summary', generateSummary);
-router.post('/chat', chat);
+router.post('/chat/:documentId', chat)
 router.post('/explain-concept', explainConcept);
 router.get('/chathistory/:documentId',getChatHistory)
 
