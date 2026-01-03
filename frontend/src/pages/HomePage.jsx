@@ -10,7 +10,7 @@ import {
   ChevronDown,
 } from "lucide-react"
 import Button from "../components/common/Button"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -49,7 +49,7 @@ const HomePage = () => {
 
           <Button className="px-4 py-2 text-sm sm:text-base">
             <Link to='/login'>
-            Get Started
+              Get Started
             </Link>
           </Button>
         </div>
@@ -79,10 +79,11 @@ const HomePage = () => {
             your learning — all in one clean workspace.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Button className="gap-2 w-full sm:w-auto">
-              <Link to='/login'>
-              Try it free <ArrowRight size={16} />
+          <div className="flex sm:flex-row gap-4 justify-center lg:justify-start">
+            <Button className="w-full sm:w-auto p-0">
+              <Link to='/login' className="flex items-center justify-center gap-2 px-6 py-3 w-full h-full">
+                Try it free
+                <ArrowRight size={16} />
               </Link>
             </Button>
           </div>
@@ -105,7 +106,7 @@ const HomePage = () => {
 
       {/* ================= FEATURES ================= */}
       <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-        
+
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {[
@@ -135,111 +136,111 @@ const HomePage = () => {
       </section>
 
       {/* ================= FAQ ================= */}
-<section
-  id="faq"
-  className="max-w-5xl mx-auto px-4 sm:px-6 pt-14"
->
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    variants={{
-      hidden: {},
-      visible: { transition: { staggerChildren: 0.12 } },
-    }}
-  >
-    <motion.h2
-      variants={fadeUp}
-      className="text-3xl sm:text-4xl font-bold text-center mb-6"
-    >
-      Questions, answered.
-    </motion.h2>
-
-    <motion.p
-      variants={fadeUp}
-      className="text-slate-600 text-center max-w-2xl mx-auto mb-16"
-    >
-      Everything you need to know before getting started. No fluff, no
-      confusion.
-    </motion.p>
-
-    <div className="space-y-4">
-      {[
-        {
-          q: "How does StudyMentor AI generate flashcards and quizzes?",
-          a: "Once you upload a document, our AI analyzes the content, identifies key concepts, definitions, and relationships, then automatically creates structured flashcards and quizzes designed for active recall — not rote memorization.",
-        },
-        {
-          q: "What file formats are supported?",
-          a: "You can upload PDFs, Word documents, and text files. We’re actively working on support for PPTs, images, and handwritten notes.",
-        },
-        {
-          q: "Is my data private and secure?",
-          a: "Yes. Your documents are private by default. We don’t share your data, and everything is protected using industry-standard security practices.",
-        },
-        {
-          q: "Can I track my learning progress?",
-          a: "Absolutely. StudyMentor AI tracks what you’ve reviewed, how often, and what you struggle with — so you always know where to focus next.",
-        },
-        {
-          q: "Is this free to use?",
-          a: "You can start for free and explore the core features. Advanced AI tools and analytics are available in premium plans.",
-        },
-      ].map((item, i) => (
-        <motion.details
-          key={i}
-          variants={fadeUp}
-          className="group rounded-2xl border border-slate-200 bg-white p-6 cursor-pointer"
+      <section
+        id="faq"
+        className="max-w-5xl mx-auto px-4 sm:px-6 pt-14"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12 } },
+          }}
         >
-          <summary className="flex items-center justify-between font-medium text-slate-900">
-            {item.q}
-            <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180 text-slate-500" />
-          </summary>
-          <p className="mt-4 text-slate-600 leading-relaxed">
-            {item.a}
-          </p>
-        </motion.details>
-      ))}
-    </div>
-  </motion.div>
-</section>
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl sm:text-4xl font-bold text-center mb-6"
+          >
+            Questions, answered.
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-slate-600 text-center max-w-2xl mx-auto mb-16"
+          >
+            Everything you need to know before getting started. No fluff, no
+            confusion.
+          </motion.p>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "How does StudyMentor AI generate flashcards and quizzes?",
+                a: "Once you upload a document, our AI analyzes the content, identifies key concepts, definitions, and relationships, then automatically creates structured flashcards and quizzes designed for active recall — not rote memorization.",
+              },
+              {
+                q: "What file formats are supported?",
+                a: "You can upload PDFs, Word documents, and text files. We’re actively working on support for PPTs, images, and handwritten notes.",
+              },
+              {
+                q: "Is my data private and secure?",
+                a: "Yes. Your documents are private by default. We don’t share your data, and everything is protected using industry-standard security practices.",
+              },
+              {
+                q: "Can I track my learning progress?",
+                a: "Absolutely. StudyMentor AI tracks what you’ve reviewed, how often, and what you struggle with — so you always know where to focus next.",
+              },
+              {
+                q: "Is this free to use?",
+                a: "You can start for free and explore the core features. Advanced AI tools and analytics are available in premium plans.",
+              },
+            ].map((item, i) => (
+              <motion.details
+                key={i}
+                variants={fadeUp}
+                className="group rounded-2xl border border-slate-200 bg-white p-6 cursor-pointer"
+              >
+                <summary className="flex items-center justify-between font-medium text-slate-900">
+                  {item.q}
+                  <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180 text-slate-500" />
+                </summary>
+                <p className="mt-4 text-slate-600 leading-relaxed">
+                  {item.a}
+                </p>
+              </motion.details>
+            ))}
+          </div>
+        </motion.div>
+      </section>
 
 
       {/* ================= CTA ================= */}
-<section className="py-10 px-4 sm:px-6">
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-    className="relative overflow-hidden rounded-3xl bg-linear-to-r from-emerald-400 to-teal-600 max-w-3/4 mx-auto p-8"
-  >
-    <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center justify-between gap-8 text-white">
-      <div className="max-w-xl text-center lg:text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-          Stop rereading.  
-          <br />
-          Start actually learning.
-        </h2>
-        <p className="text-white/90 text-lg">
-          Turn your notes into flashcards, quizzes, and real understanding —
-          automatically.
-        </p>
-      </div>
+      <section className="py-10 px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-3xl bg-linear-to-r from-emerald-400 to-teal-600 max-w-3/4 mx-auto p-8"
+        >
+          <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center justify-between gap-8 text-white">
+            <div className="max-w-xl text-center lg:text-left">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Stop rereading.
+                <br />
+                Start actually learning.
+              </h2>
+              <p className="text-white/90 text-lg">
+                Turn your notes into flashcards, quizzes, and real understanding —
+                automatically.
+              </p>
+            </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-        <Link to='/login'>
-        <Button variant="ghost" className="bg-white mx-auto  text-slate-800 w-full sm:w-auto">
-          Get Started Free
-        </Button>
-        </Link>
-      </div>
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <Link to='/login'>
+                <Button variant="ghost" className="bg-white mx-auto  text-slate-800 w-full sm:w-auto">
+                  Get Started Free
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Glow */}
+          <div className="absolute -top-20 -right-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+        </motion.div>
+      </section>
     </div>
-
-    {/* Glow */}
-    <div className="absolute -top-20 -right-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
-  </motion.div>
-</section>
-</div>
   )
 }
 
